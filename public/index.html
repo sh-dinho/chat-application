@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chat Appp</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="chat-room">
+
+    <h2>Chat Room</h2>
+
+    <div id="chat-window">
+        <ul id="messages"></ul>
+    </div>
+
+    <input id="nickname" type="text" placeholder="Nickname" >
+    <form action="">
+        <input id="m" type="text" placeholder="Message" autocomplete="off">
+        <button>Send</button>
+    </form>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/client.js"></script>
+
+</body>
+</html>
