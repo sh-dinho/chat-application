@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Real-Time Chat</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Secure Chat App</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -17,11 +19,15 @@
     <input id="nickname" type="text" placeholder="Enter Nickname..." autocomplete="off">
     <form>
         <input id="m" type="text" placeholder="Type a message..." autocomplete="off">
-        <button type="submit">Send Message</button>
+        <button type="submit">Send</button>
     </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script 
+    src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous">
+</script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="client.js"></script>
 

@@ -1,37 +1,32 @@
 $(function () {
     const socket = io();
+    const $form = $('form');
+    const $button = $('button');
     const $messageInput = $('#m');
-    const $nicknameInput = $('#nickname');
-    const $messages = $('#messages');
 
-    $('form').submit(function(e) {
+    $form.submit(function(e) {
         e.preventDefault();
         
         const msg = $messageInput.val();
-        const nick = $nicknameInput.val() || 'Anonymous';
+        const nick = $('#nickname').val() || 'Anonymous';
 
         if (msg.trim() !== "") {
-            // Send object with nickname and message
-            socket.emit('chat message', {
-                nickname: nick,
-                message: msg
-            });
+            socket.emit('chat message', { nickname: nick, message: msg });
             $messageInput.val('');
+
+            // Disable button for 500ms to prevent double-clicks
+            $button.prop('disabled', true);
+            setTimeout(() => { $button.prop('disabled', false); }, 500);
         }
         return false;
     });
 
     socket.on('chat message', function(data) {
-        // Create the message element
         const $msgElement = $('<p>').append(
             $('<strong>').text(data.nickname + ": "),
-            $('<span>').text(data.message),
-            $('<small>').text(" " + data.time).css('color', '#ccc', 'margin-left', '10px')
+            $('<span>').text(data.message)
         );
-
-        $messages.append($msgElement);
-        
-        // Auto-scroll to bottom
+        $('#messages').append($msgElement);
         const chatWindow = document.getElementById('chat-window');
         chatWindow.scrollTop = chatWindow.scrollHeight;
     });
